@@ -28,10 +28,16 @@ def create_tables(cur, conn):
     for query in sql_queries.create_table.all:
         cur.execute(query)
         conn.commit()
+        
+def drop_table(cur, conn):
+    for query in sql_queries.drop_table.all:
+        cur.execute(query)
+        conn.commit()
 
 def main():
     
     cur, conn = create_db('mydb')
+    drop_table(cur, conn)
     create_tables(cur, conn)
     conn.close()
 
