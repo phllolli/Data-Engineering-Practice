@@ -10,7 +10,7 @@ class create_table:
         session_id int, 
         location text, 
         user_agent text)
-    """)
+    """) 
 
     user = ("""
         CREATE TABLE IF NOT EXISTS users
@@ -63,7 +63,7 @@ class drop_table:
 class insert_record:
     songplay = ("""
                 INSERT INTO songplays
-                (songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location)
+                (songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 ON CONFLICT (songplay_id) DO NOTHING;
                 """)
@@ -89,7 +89,7 @@ class insert_record:
             ON CONFLICT (artist_id) DO NOTHING;
             """)
     
-    time_table_insert = ("""
+    time = ("""
         INSERT INTO time
         (start_time, hour, day, week, month, year, weekday)
         VALUES (%s, %s, %s, %s, %s, %s, %s)
