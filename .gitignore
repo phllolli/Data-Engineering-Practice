@@ -2,6 +2,3 @@
 password.txt
 *.pyc
 .vscode/settings.json
-*.pyc
-*.pyc
-__pycache__/sql_queries.cpython-36.pyc
