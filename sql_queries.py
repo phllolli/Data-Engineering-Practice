@@ -2,11 +2,11 @@ class create_table:
     songplay = ("""
         CREATE TABLE IF NOT EXISTS songplays
         (songplay_id int PRIMARY KEY, 
-        start_time date , 
-        user_id int NOT NULL, 
+        start_time date REFERENCES time(start_time), 
+        user_id int NOT NULL REFERENCES users(user_id), 
         level text, 
-        song_id text, 
-        artist_id text, 
+        song_id text REFERENCES songs(song_id), 
+        artist_id text REFERENCES artists(artist_id), 
         session_id int, 
         location text, 
         user_agent text)
@@ -25,7 +25,7 @@ class create_table:
         CREATE TABLE IF NOT EXISTS songs
         (song_id text PRIMARY KEY, 
         title text NOT NULL, 
-        artist_id text NOT NULL, 
+        artist_id text NOT NULL REFERENCES artists(artist_id), 
         year int, 
         duration float NOT NULL)
     """)
@@ -35,8 +35,8 @@ class create_table:
         (artist_id text PRIMARY KEY,
         name text NOT NULL, 
         location text, 
-        lattitude float, 
-        longitude float)
+        latitude float, 
+        longitude float)   
     """)
 
     time = ("""
