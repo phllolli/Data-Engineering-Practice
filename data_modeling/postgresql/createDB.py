@@ -35,7 +35,6 @@ def drop_table(cur, conn):
         conn.commit()
 
 def main():
-    
     cur, conn = create_db('mydb')
     drop_table(cur, conn)
     create_tables(cur, conn)
